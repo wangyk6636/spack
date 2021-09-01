@@ -1,0 +1,24 @@
+name: Sync from upstream 
+ on: 
+ schedule: 
+ # 每天凌晨一点执行一次 
+ - cron: '*/6 * * * *' 
+ push: 
+ branches: 
+ - git_sync 
+   jobs: 
+ merge: 
+ runs-on: ubuntu-latest 
+ steps: 
+ - uses: actions/checkout@v2 
+ - name: sync from upstream 
+ env: 
+ SYNC_URL: 'https://github.com/spack/spack' 
+ SYNC_BRANCH: 'develop' 
+ run: | 
+ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+ echo "date==[`date`]" 
+   git remote add upstream "$SYNC_URL" 
+ git fetch upstream 
+ git checkout -b $SYNC_BRANCH upstream/$SYNC_BRANCH 
+ git push origin $SYNC_BRANCH 
