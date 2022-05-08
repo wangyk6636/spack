@@ -56,7 +56,7 @@ Community
 Spack is an open source project.  Questions, discussion, and
 contributions are welcome. Contributions can be anything from new
 packages to bugfixes, documentation, or even new core features.
-
+test file
 Resources:
 
 * **Slack workspace**: [spackpm.slack.com](https://spackpm.slack.com).
